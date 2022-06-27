@@ -1,0 +1,61 @@
+\documentclass{ctexart}
+
+\usepackage{graphicx}
+\usepackage{amsmath}
+
+\title{作业一: 带皮亚诺余项的泰勒定理的叙述与证明}
+
+
+\author{罗利波 \\ 数学与应用数学\quad 3190103471}
+
+\begin{document}
+
+\maketitle
+
+
+这是一个来自单变量微积分领域的问题,我们在学习导数和微分时已经知道，如果函数$f$在点$x_0$可导，则有
+\begin{equation}
+f(x)=f(x_0)+f'(x_0)(x-x_0)+o(x-x_0).
+\end{equation}
+即在点$x_0$附近，用一次多项式$f(x_0)+f'(x_0)(x-x_0)$逼近函数$f(x)$时，其误差为$(x-x_0)$的高阶无穷小量.然而在很多场合，取一次多项式逼近是不够的，往往需要用二次或高于二次的多项式去逼近，并要求误差为$o((x-x_0)^n)$.带皮亚诺余项的泰勒定理就给出了一种方法来逼近任意一个具有一定光滑性的函数.
+\section{问题描述}
+问题叙述如下: 假设函数$f$在点$x_0$存在直至$n$阶导数,我们令
+\begin{equation}
+T_n(x)=f(x_0)+\frac{f'(x_0)}{1!}(x-x_0)+\frac{f''(x_0)}{2!}(x-x_0)^2+\cdots+\frac{f^{(n)}(x_0)}{n!}(x-x_0)^n \label{talor}
+\end{equation}
+它被称为函数$f$在点$x_0$处的泰勒多项式。带皮亚诺余项的泰勒定理指的是用$\eqref{talor}$所示的泰勒多项式逼近$f(x)$ 时,其误差为关于$(x-x_0)^n$的高阶无穷小量，即
+\begin{equation}
+ \begin{aligned}
+f(x) & =f(x_0)+\frac{f'(x_0)}{1!}(x-x_0)+\frac{f''(x_0)}{2!}(x-x_0)^2+\cdots\\ & +\frac{f^{(n)}(x_0)}{n!}(x-x_0)^n+o((x-x_0)^n)
+ \end{aligned}
+\end{equation}
+\section{证明}
+设
+\begin{equation}
+R_n(x)=f(x)-T_n(x),Q_n(x)=(x-x_0)^n,
+\end{equation}
+则我们只需证明
+\begin{equation}
+\lim_{x \rightarrow x_0}\frac{R_n(x)}{Q_n(x)}=0.
+\end{equation}
+\par 
+从$T_n(x)$的表达式可以明显地看到$f(x)$和$T_n(x)$在点$x_0$有相同的函数值和相同的直至$n$阶导数值，即
+\begin{equation}
+f^{(k)}(x_0)=T^{(k)}_n(x_0),k=0,1,2,\cdots,n.
+\end{equation}
+所以
+\begin{equation}
+R_n(x_0)=R'_n(x_0)=\cdots=R_n^{(n)}(x_0)=0.
+\end{equation}
+从$Q_n(x)$的表达式可知
+\begin{equation}
+Q_n(x_0)=Q'_n(x_0)=\cdots=Q_n^{(n-1)}(x_0)=0,Q_n^{(n)}(x_0)=n!.
+\end{equation}
+因为$f^{(n)}(x_0)$存在，所以在点$x_0$的某邻域$U(x_0)$上$f$存在$n-1$阶导函数$f(x)$.于是，当$x\in U^{\circ}(x_0)$且$x\to x_0$时，允许接连使用洛必达法则$n-1$次，得到
+\begin{equation}
+ \begin{aligned}
+ \lim_{x\to x_0}\frac{R_n(x)}{Q_n(x)} & =\lim_{x\to x_0}\frac{R'_n(x)}{Q'_n(x)}=\cdots=\lim_{x\to x_0}\frac{R^{(n-1)}_n(x)}{Q^{(n-1)}_n(x)}\\ & =\lim_{x\to x_0}\frac{f^{(n-1)}(x)-f^{(n-1)}(x_0)-f^{(n)}(x_0)(x-x_0)}{n(n-1)\cdots 2(x-x_0)}\\ & = \frac{1}{n!}\lim_{x\to x_0}\big[\frac{f^{(n-1)}(x)-f^{(n-1)}(x_0)}{x-x_0}-f^{(n)}(x_0)\big]\\ & =0.
+ \end{aligned}
+\end{equation}
+
+\end{document}
